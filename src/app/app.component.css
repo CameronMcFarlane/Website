@@ -1,15 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.title {
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 50px;
+}
 
 .title p {
-    font-size: 20px;
+    font-size: 25pt;
+    padding-left: 3px;
 }
 
 .title h1 {
     color: #FF9059;
     font-family: 'Open Sans', sans-serif;
-    font-size: 60px;
+    font-size: 60pt;
+    margin-top: -10px;
 }
 
-.title img {
+.social {
     float: right;
+    margin-top: 50px;
+    margin-right: 5%;
 }
