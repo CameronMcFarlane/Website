@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.title p {
+    font-size: 20px;
+}
+
+.title h1 {
+    color: #FF9059;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 60px;
+}
+
+.title img {
+    float: right;
+}
