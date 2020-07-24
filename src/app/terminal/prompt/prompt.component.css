@@ -1,12 +1,11 @@
 .prompt {
-    margin-left: 50px;
-    margin-right: 50px;
+    color: #FF9059;
 }
 
-.user {
-    color: #FF9059;
+.directory {
+    color: #00cccc;
 }
 
 [contenteditable] {
     outline: 0px solid transparent;
-  }
+}
