@@ -19,13 +19,17 @@ export class TerminalComponent implements OnInit {
   ngOnInit(): void { }
 
   // Puts the cursor on the prompt when the terminal is clicked
-  focusPrompt() {
-    let prompts: HTMLCollection = document.getElementsByClassName('promptInput');
-    (<HTMLSpanElement>prompts[prompts.length - 1]).focus();
+  setFocusOnPrompt() {
+    let input: HTMLSpanElement = document.getElementById('prompt-input');
+    input.focus();
   }
 
   // Processes the command received from the prompt
   processCommand(command: string) {
+    // Ensure that the div always scrolls to the bottom
+    let terminalText: HTMLCollection = document.getElementsByClassName('terminal-text');
+    terminalText[0].scrollTop = terminalText[0].scrollHeight;
+    
     this.outputs.push({
       username: this.username,
       directory: this.directory,
