@@ -10,6 +10,9 @@
     bottom: 65px;
     left: 5%;
     right: 5%;
+    /* Flexbox */
+    display: flex;
+    flex-direction: column;
 }
 
 .terminal-hide {
@@ -21,8 +24,14 @@
 }
 
 .terminal-text {
+    word-break: break-all;
     margin-left: 50px;
     margin-right: 50px;
+    margin-bottom: 50px;
+    /* Text Overflow */
+    overflow-x: hidden; 
+    overflow-y: auto;
+    flex-direction: column-reverse;
 }
 
 .terminal-prompt {
@@ -31,4 +40,23 @@
 
 .terminal-directory {
     color: #00cccc;
+}
+
+/* Scroll Bar Styling */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #262626;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3b3b3b;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #474747;
 }
