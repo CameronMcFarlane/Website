@@ -10,7 +10,7 @@ export class TerminalComponent implements OnInit {
   // The username of the user logged in
   username: string = 'user';
   // The current 'directory' we are in
-  directory: string = '/home/cam';
+  directory: string = '~';
   // The data to output
   outputs: object[] = [];
 

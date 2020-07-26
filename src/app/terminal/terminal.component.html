@@ -2,14 +2,14 @@
     <p class="terminal-hide">hide</p>
     <div class="terminal-text">
         <div *ngFor="let output of outputs">
-            <span class="terminal-prompt">{{output.username}}@cameronmcfarlane.dev</span>
+            <span class="terminal-prompt">{{output.username}}@mcfarlane</span>
             <span>:</span>
             <span class="terminal-directory">{{output.directory}}</span>
             <span>$&nbsp;{{output.command}}</span>
         </div>
         <app-prompt 
-            [username]="username"
-            [directory]="directory"
+            [username]="username" 
+            [directory]="directory" 
             (keyEnter)="processCommand($event)">
         </app-prompt>
     </div>
