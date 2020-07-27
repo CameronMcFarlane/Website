@@ -10,29 +10,43 @@ import { LoginCommand } from "./commands/login.command";
   encapsulation: ViewEncapsulation.None
 })
 export class TerminalComponent implements OnInit {
-  
   // The username of the user logged in
-  username: string = 'user';
+  username: string;
   // The current 'directory' we are in
-  directory: string = '~';
+  directory: string;
   // The data to output
-  outputs: string[] = [];
-  // List of active commands;
-  commands: Command[] = [];
+  outputs: string[];
+  // List of available commands
+  commands: Command[];
+  // The name of any running command
+  activeCommand: string;
 
-  // Class Constructor
-  // Ready all available commands
+  /**
+   * Constructor. Initialise all properties and
+   * add all available commands.
+   */
   constructor() { 
-    this.commands.push(new ClearCommand());
-    this.commands.push(new LoginCommand());
+    this.username = "guest";
+    this.directory = "/";
+    this.outputs = [];
+
+    this.commands = [
+      new ClearCommand(),
+      new LoginCommand()
+    ]
   }
 
-  // Angular Constructor
-  // Executes after Angular initialisation
+  /**
+   * Angular Constructor. 
+   * Executes once all components are ready.
+   */
   ngOnInit(): void {
     this.addPrompt();
   }
 
+  /**
+   * Adds a prompt to the terminal window.
+   */
   private addPrompt() {
     this.outputs.push(
       '<span class="terminal-user">' + this.username + '@mcfarlane</span>'
@@ -42,22 +56,30 @@ export class TerminalComponent implements OnInit {
     )
   }
 
-  // Puts the cursor on the prompt when the terminal is clicked
-  public setFocusOnPrompt(): void {
+  /**
+   * Sets the focus on the input field of the terminal.
+   */
+  public setFocusOnInput(): void {
     let input: HTMLSpanElement = document.getElementById('prompt-input');
     input.focus();
   }
 
-  // Processes the command received from the prompt
-  public processCommand(command: string): void {
+  /**
+   * Processes the text received from the input field.
+   * @param input The text received from the input
+   */
+  public processInput(input: string): void {
     // Ensure that the div always scrolls to the bottom
     let terminalText: HTMLCollection = document.getElementsByClassName('terminal-text');
     terminalText[0].scrollTop = terminalText[0].scrollHeight;
+
     // Add command to the output
-    this.outputs[this.outputs.length - 1] += command + '<br/>';
+    this.outputs[this.outputs.length - 1] += input + '<br/>';
+
     // Divide up the keyword and arguments
-    let keyword: string = command.trim().split(' ')[0];
-    let args: string[] = command.trim().split(' ').slice(1);
+    let keyword: string = input.trim().split(' ')[0];
+    let args: string[] = input.trim().split(' ').slice(1);
+
     // Loop through all known command alias to find a match
     let commandFound: boolean = false;
     for (let command of this.commands) {
@@ -66,13 +88,14 @@ export class TerminalComponent implements OnInit {
         commandFound = true;
       }
     }
+
     // Print error if no valid command was found
     if (!commandFound) {
       this.outputs[this.outputs.length - 1] += 
         keyword + ': command not found<br/>';
     }
+
     // Adds prompt to screen
     this.addPrompt();
   }
-
 }

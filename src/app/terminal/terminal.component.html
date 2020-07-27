@@ -1,5 +1,5 @@
 <div class="terminal-background" 
-    (click)="setFocusOnPrompt()">
+    (click)="setFocusOnInput()">
 
     <p class="terminal-hide">hide</p>
 
@@ -8,7 +8,7 @@
             <span [innerHTML]="output"></span>
         </span>
         <app-prompt
-            (keyEnter)="processCommand($event)">
+            (keyEnter)="processInput($event)">
         </app-prompt>
     </div>
     
