@@ -1,11 +1,3 @@
-.prompt {
-    color: #FF9059;
-}
-
-.directory {
-    color: #00cccc;
-}
-
 [contenteditable] {
     outline: 0px solid transparent;
 }

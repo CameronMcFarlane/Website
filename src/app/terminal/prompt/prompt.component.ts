@@ -7,10 +7,6 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class PromptComponent implements OnInit {
 
-  // The username of the logged in user
-  @Input() username: string;
-  // The current 'directory' we are in
-  @Input() directory: string;
   // The event fired when the ENTER key is pressed
   @Output() keyEnter = new EventEmitter<string>();
   // Whether the input is editable or not

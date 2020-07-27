@@ -1,12 +1,6 @@
-<p>
-    <span class="prompt">{{username}}@mcfarlane</span>
-    <span>:</span>
-    <span class="directory">{{directory}}</span>
-    <span>$&nbsp;</span>
-    <span id="prompt-input"
-        (keyup)="storeInput($event)"
-        (keydown)="processCommand($event)"
-        [attr.contenteditable]="editable"
-        spellcheck="false">
-    </span>
-</p>
+<span id="prompt-input"
+    (keyup)="storeInput($event)"
+    (keydown)="processCommand($event)"
+    [attr.contenteditable]="editable"
+    spellcheck="false">
+</span>
