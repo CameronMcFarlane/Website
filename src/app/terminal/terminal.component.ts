@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Command } from './commands/command';
 import { ClearCommand } from './commands/clear.command';
+import { LoginCommand } from "./commands/login.command";
 
 @Component({
   selector: 'app-terminal',
@@ -23,6 +24,7 @@ export class TerminalComponent implements OnInit {
   // Ready all available commands
   constructor() { 
     this.commands.push(new ClearCommand());
+    this.commands.push(new LoginCommand());
   }
 
   // Angular Constructor
@@ -52,10 +54,10 @@ export class TerminalComponent implements OnInit {
     let terminalText: HTMLCollection = document.getElementsByClassName('terminal-text');
     terminalText[0].scrollTop = terminalText[0].scrollHeight;
     // Add command to the output
-    this.outputs[this.outputs.length - 1] += command + '<br />';
+    this.outputs[this.outputs.length - 1] += command + '<br/>';
     // Divide up the keyword and arguments
-    let keyword: string = command.split(' ')[0];
-    let args: string[] = command.split(' ').slice(1);
+    let keyword: string = command.trim().split(' ')[0];
+    let args: string[] = command.trim().split(' ').slice(1);
     // Loop through all known command alias to find a match
     let commandFound: boolean = false;
     for (let command of this.commands) {
