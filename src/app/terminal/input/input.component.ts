@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'terminal-input',
@@ -56,7 +56,7 @@ export class InputComponent {
       // Send command to terminal
       case "Enter":
         event.preventDefault();
-        this.keyEnter.emit(input.innerText);
+        this.keyEnter.emit(this.escapeHTML(input.innerText));
         this.history.push(input.innerText);
         this.historyIndex = this.history.length;
         input.innerText = "";
@@ -85,5 +85,18 @@ export class InputComponent {
     } else if (this.historyIndex < 0) {
       this.historyIndex = 0;
     }
+  }
+
+  /**
+   * Escapes the given string and returns a safe string.
+   * @param unsafe The unsafe string. 
+   */
+  private escapeHTML(unsafe: string): string {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
   }
 }
