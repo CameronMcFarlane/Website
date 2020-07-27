@@ -1,15 +1,19 @@
 import { Command } from './command';
 import { TerminalComponent } from '../terminal.component';
 
+/**
+ * A command for clearing all output from the Terminal.
+ */
 export class ClearCommand implements Command {
-
-    alias: string[] = [ 
-        'clear',
-        'cls'
-    ];
+    // A list of keywords which will trigger this command
+    public alias: string[] = [ 'clear', 'cls' ];
     
-    execute(terminal: TerminalComponent, args: string[]): void {
+    /**
+     * Clears all output from the Terminal.
+     * @param terminal Reference to the terminal object.
+     * @param args Any arguments provided with the command.
+     */
+    public execute(terminal: TerminalComponent, args: string[]): void {
         terminal.outputs = [];
     }
-
 }
