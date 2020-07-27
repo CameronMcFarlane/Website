@@ -7,9 +7,9 @@
         <span *ngFor="let output of outputs">
             <span [innerHTML]="output"></span>
         </span>
-        <app-prompt
+        <terminal-input
             (keyEnter)="processInput($event)">
-        </app-prompt>
+        </terminal-input>
     </div>
     
 </div>

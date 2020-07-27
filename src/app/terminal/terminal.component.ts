@@ -60,7 +60,7 @@ export class TerminalComponent implements OnInit {
    * Sets the focus on the input field of the terminal.
    */
   public setFocusOnInput(): void {
-    let input: HTMLSpanElement = document.getElementById('prompt-input');
+    let input: HTMLSpanElement = document.getElementById('terminal-input');
     input.focus();
   }
 

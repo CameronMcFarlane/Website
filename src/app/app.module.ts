@@ -4,13 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TerminalComponent } from './terminal/terminal.component';
-import { PromptComponent } from './terminal/prompt/prompt.component';
+import { InputComponent } from './terminal/input/input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TerminalComponent,
-    PromptComponent
+    InputComponent
   ],
   imports: [
     BrowserModule,

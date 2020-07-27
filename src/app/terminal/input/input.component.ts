@@ -1,14 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-prompt',
-  templateUrl: './prompt.component.html',
-  styleUrls: ['./prompt.component.css']
+  selector: 'terminal-input',
+  templateUrl: './input.component.html',
+  styleUrls: ['./input.component.css']
 })
-export class PromptComponent implements OnInit {
-
-  // The event fired when the ENTER key is pressed
-  @Output() keyEnter = new EventEmitter<string>();
+export class InputComponent {
   // Whether the input is editable or not
   editable: boolean = true;
   // An array of previously used commands
@@ -18,11 +15,13 @@ export class PromptComponent implements OnInit {
   // Stores the text entered into the input
   inputText: string;
 
-  // Constructors!
-  constructor() { }
-  ngOnInit(): void { }
+  // The event fired when the ENTER key is pressed
+  @Output() keyEnter = new EventEmitter<string>();
 
-  // Store current input text in case we wanna come back to it
+  /**
+   * Stores current input text in case we want to come back to it.
+   * @param event The event data provided by the event. 
+   */
   public storeInput(event: KeyboardEvent) {
     if (event.code === "Enter") {
       this.inputText = "";
@@ -31,9 +30,11 @@ export class PromptComponent implements OnInit {
     }
   }
 
-  // Manage functionality for ENTER, UP and DOWN keys
+  /**
+   * Manages functionality for ENTER, UP and DOWN keys.
+   * @param event The event data provided by the event.
+   */  
   public processCommand(event: KeyboardEvent) {
-    
     // Get the input span
     let input: HTMLSpanElement = <HTMLSpanElement>event.target;
 
@@ -63,9 +64,11 @@ export class PromptComponent implements OnInit {
     }
   }
 
-  // Update the prompt depending on the historyIndex property
+  /**
+   * Update the prompt depending on the historyIndex property.
+   * @param input The contenteditable input span HTML element.
+   */
   private updatePrompt(input: HTMLSpanElement) {
-
     // Check if the historyIndex is within the bounds of the history array
     // If so, update span with history item
     if (this.historyIndex >= 0 && this.historyIndex < this.history.length) {
