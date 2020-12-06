@@ -19,25 +19,3 @@
     font-size: 60pt;
     margin-top: -10px;
 }
-
-.github {
-    float:right;
-}
-
-.github svg {
-    fill: #EFEFEF;
-    transition: 0.3s;
-}
-
-.github:hover svg {
-    fill: #FF9059;
-}
-
-.github-mark {
-    width: 32px;
-}
-
-.github-logo {
-    width: 110px;
-    margin-left: 10px;
-}
