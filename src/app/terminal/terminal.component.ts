@@ -16,10 +16,10 @@ export class TerminalComponent implements OnInit, AfterViewChecked {
   directory: string;
   // The data to output
   outputs: string[];
+  // Reference to the currently active command
+  activeCommand: Command;
   // List of available commands
   commands: Command[];
-  // The name of any running command
-  activeCommand: string;
 
   /**
    * Constructor. Initialise all properties and
@@ -29,6 +29,7 @@ export class TerminalComponent implements OnInit, AfterViewChecked {
     this.username = "guest";
     this.directory = "/";
     this.outputs = [];
+    this.activeCommand = null;
     this.commands = [
       new ClearCommand(),
       new LoginCommand()
@@ -71,31 +72,32 @@ export class TerminalComponent implements OnInit, AfterViewChecked {
    * @param input The text received from the input
    */
   public processInput(input: string): void {
-    // Add command to the output
+    // Add command to the output prompt
     this.outputs[this.outputs.length - 1] += input + '<br/>';
 
-    if (input.trim() != '') {
+    if (this.activeCommand != null) {
+      this.activeCommand.execute(this, [input]);
+
+    } else {
       // Divide up the keyword and arguments
       let keyword: string = input.trim().split(' ')[0];
       let args: string[] = input.trim().split(' ').slice(1);
-
       // Loop through all known command alias to find a match
       let commandFound: boolean = false;
       for (let command of this.commands) {
         if (command.alias.includes(keyword)) {
-          command.execute(this, args);
+          if (command.execute(this, args)) {
+            this.activeCommand = command;
+          }
           commandFound = true;
         }
       }
-
       // Print error if no valid command was found
       if (!commandFound) {
         this.outputs[this.outputs.length - 1] += 
           keyword + ': command not found<br/>';
       }
     }
-
-    // Adds prompt to screen
-    this.addPrompt();
   }
+
 }

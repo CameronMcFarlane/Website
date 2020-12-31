@@ -12,8 +12,10 @@ export class ClearCommand implements Command {
      * Clears all output from the Terminal.
      * @param terminal Reference to the terminal object.
      * @param args Any arguments provided with the command.
+     * @returns True if more input is required, false if finished.
      */
-    public execute(terminal: TerminalComponent, args: string[]): void {
+    public execute(terminal: TerminalComponent, args: string[]): boolean {
         terminal.outputs = [];
+        return false;
     }
 }
