@@ -8,7 +8,8 @@
             <span [innerHTML]="output"></span>
         </span>
         <terminal-input
-            (keyEnter)="processInput($event)">
+            (keyEnter)="processInput($event)"
+            (forceQuit)="forceQuit()">
         </terminal-input>
     </div>
     

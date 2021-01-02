@@ -17,6 +17,8 @@ export class InputComponent {
 
   // The event fired when the ENTER key is pressed
   @Output() keyEnter = new EventEmitter<string>();
+  // The event fired when CTRL+C is pressed
+  @Output() forceQuit = new EventEmitter<void>();
 
   /**
    * Stores current input text in case we want to come back to it.
@@ -37,6 +39,11 @@ export class InputComponent {
   public processCommand(event: KeyboardEvent) {
     // Get the input span
     let input: HTMLSpanElement = <HTMLSpanElement>event.target;
+
+    // Emit a force quit event if CTRL+C is pressed
+    if (event.ctrlKey && event.code === "KeyC") {
+      this.forceQuit.emit();
+    }
 
     switch (event.code) {
       // Move back through the history array

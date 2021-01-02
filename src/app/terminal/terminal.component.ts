@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation, AfterViewChecked } from '@angular
 import { Command } from './commands/command';
 import { ClearCommand } from './commands/clear.command';
 import { LoginCommand } from "./commands/login.command";
+import { InitCommand } from "./commands/init.command";
+import { HelpCommand } from "./commands/help.command";
 
 @Component({
   selector: 'app-terminal',
@@ -32,12 +34,14 @@ export class TerminalComponent implements OnInit, AfterViewChecked {
     this.activeCommand = null;
     this.commands = [
       new ClearCommand(),
-      new LoginCommand()
+      new LoginCommand(),
+      new HelpCommand()
     ]
   }
 
   // Adds the first prompt to the output
   ngOnInit(): void {
+    new InitCommand().execute(this, []);
     this.addPrompt();
   }
 
@@ -52,7 +56,8 @@ export class TerminalComponent implements OnInit, AfterViewChecked {
    */
   private addPrompt() {
     this.outputs.push(
-      '<span class="terminal-user">' + this.username + '@mcfarlane</span>'
+      '<br/>'
+      + '<span class="terminal-user">' + this.username + '@terminal</span>'
       + '<span>:</span>'
       + '<span class="terminal-directory">' + this.directory + '</span>'
       + '<span>$&nbsp;</span>'
@@ -76,28 +81,44 @@ export class TerminalComponent implements OnInit, AfterViewChecked {
     this.outputs[this.outputs.length - 1] += input + '<br/>';
 
     if (this.activeCommand != null) {
-      this.activeCommand.execute(this, [input]);
+      if (!this.activeCommand.execute(this, [input])) {
+        this.activeCommand = null;
+        this.addPrompt();
+      }
 
     } else {
       // Divide up the keyword and arguments
       let keyword: string = input.trim().split(' ')[0];
       let args: string[] = input.trim().split(' ').slice(1);
       // Loop through all known command alias to find a match
-      let commandFound: boolean = false;
+      let commandFound: Command = null;
       for (let command of this.commands) {
         if (command.alias.includes(keyword)) {
-          if (command.execute(this, args)) {
-            this.activeCommand = command;
-          }
-          commandFound = true;
+          commandFound = command;
         }
       }
       // Print error if no valid command was found
       if (!commandFound) {
         this.outputs[this.outputs.length - 1] += 
-          keyword + ': command not found<br/>';
+          keyword + ': command not found';
+        this.addPrompt();
+      } else {
+        if (commandFound.execute(this, args)) {
+          this.activeCommand = commandFound;
+        } else {
+          this.addPrompt();
+        }
       }
     }
+  }
+
+  /**
+   * Force quits the currently active command.
+   */
+  public forceQuit(): void {
+    this.outputs.push('^C')
+    this.activeCommand = null;
+    this.addPrompt();
   }
 
 }
