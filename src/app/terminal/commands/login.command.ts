@@ -12,6 +12,30 @@ export class LoginCommand implements Command {
     private username: string = '';
     // The password for the attempted login
     private password: string = '';
+    // If the user has logged in successfully or not
+    private loggedIn: boolean = false;
+
+    /**
+     * Check if the given username is valid.
+     * @param username The username to check.
+     */
+    private checkUsername(username: string): void {
+        if (username.trim() != '') {
+            this.username = username;
+        }
+    }
+
+    /**
+     * Check if the given password is valid for the set user.
+     * @param password The password to check.
+     */
+    private checkPassword(password: string): void {
+        if (password.trim() != '') {
+            if (password === 'test') {
+                this.password = password;
+            }
+        }
+    }
 
     /**
      * Executes the login process.
@@ -20,15 +44,26 @@ export class LoginCommand implements Command {
      * @returns True if more input is required, false if finished.
      */
     public execute(terminal: TerminalComponent, args: string[]): boolean {
-        let output: string;
-        
-        if (args.length < 1) {
-            output = "username: ";
-        } else {
-            output = "password: ";
+        // Check the inputs
+        if (this.username == '' && args.length > 0) this.checkUsername(args[0]);
+        else if (this.password == '' && args.length > 0) this.checkPassword(args[0]);
+        // Update the prompt based on the current login progress
+        if (this.username == '') terminal.outputs.push('username: ');
+        else if (this.password == '') terminal.outputs.push('password: ');
+        else {
+            terminal.outputs.push('logged in succesfully as ' + this.username);
+            terminal.username = this.username;
+            this.loggedIn = true;
         }
 
-        terminal.outputs[terminal.outputs.length - 1] += output;
-        return true;
+        return !this.loggedIn;
+    }
+
+    /**
+     * Returns a short description of what this command does.
+     * @returns A short description of this command.
+     */
+    public getDescription(): string {
+        return "allows you to log in or something"
     }
 }

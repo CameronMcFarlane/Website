@@ -14,4 +14,10 @@ export interface Command {
      * @returns True if more input is required, false if finished.
      */
     execute(terminal: TerminalComponent, args: string[]): boolean;
+
+    /**
+     * Returns a short description of what this command does.
+     * @returns A short description of this command.
+     */
+    getDescription(): string;
 }

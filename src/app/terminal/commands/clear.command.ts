@@ -18,4 +18,12 @@ export class ClearCommand implements Command {
         terminal.outputs = [];
         return false;
     }
+
+    /**
+     * Returns a short description of what this command does.
+     * @returns A short description of this command.
+     */
+    public getDescription(): string {
+        return "clears all output from the terminal"
+    }
 }
