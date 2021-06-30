@@ -7,6 +7,7 @@ import { TerminalComponent } from './terminal/terminal.component';
 import { InputComponent } from './terminal/input/input.component';
 import { GitHubLogoComponent } from './svg/github.logo.component';
 import { GitHubMarkComponent } from './svg/github.mark.component';
+import { DraggableDirective } from './directives/draggable.directive';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { GitHubMarkComponent } from './svg/github.mark.component';
     TerminalComponent,
     InputComponent,
     GitHubLogoComponent,
-    GitHubMarkComponent
+    GitHubMarkComponent,
+    DraggableDirective
   ],
   imports: [
     BrowserModule,
