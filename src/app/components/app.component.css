@@ -1,21 +1,29 @@
 .container {
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 80px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 80px;
 }
 
 .title {
-    float: left;
+  float: left;
 }
 
 .title p {
-    font-size: 25pt;
-    padding-left: 3px;
+  font-size: 25pt;
+  padding-left: 3px;
 }
 
 .title h1 {
-    color: #FF9059;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 60pt;
-    margin-top: -10px;
+  color: #FF9059;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 60pt;
+  margin-top: -10px;
+}
+
+.window {
+  position: absolute;
+  border: 1px solid #d3d3d3;
+  cursor: grab;
+  height: 800px;
+  width: 700px;
 }
