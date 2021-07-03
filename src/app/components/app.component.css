@@ -20,16 +20,27 @@
   margin-top: -10px;
 }
 
-.window {
+.pane {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   cursor: grab;
-  height: 500px;
-  width: 750px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px -1px black;
+  overflow: hidden;
 }
 
-.window2 {
-  position: absolute;
-  cursor: grab;
-  height: 400px;
+.pane-title {
+  background-color: red;
+  height: 30px;
+}
+
+.pane-body {
+  background-color: blue;
   width: 400px;
+  height: 400px;
+}
+
+.pane-footer {
+  background-color: green;
 }

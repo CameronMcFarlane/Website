@@ -3,10 +3,13 @@
     <p>Here is a subtitle.</p>
     <h1>Here is a title.</h1>
   </div>
-  <div draggable class="window">
-    <app-terminal></app-terminal>
-  </div>
-  <div draggable class="window2">
-    <app-terminal></app-terminal>
+  <!-- Panes defined here -->
+  <div pane class="pane">
+    <div class="pane-title"></div>
+    <div class="pane-body">
+      body
+      <!-- <app-terminal></app-terminal> -->
+    </div>
+    <div class="pane-footer">resize</div>
   </div>
 </div>

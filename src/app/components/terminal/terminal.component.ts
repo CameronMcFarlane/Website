@@ -117,6 +117,9 @@ export class TerminalComponent implements OnInit, AfterViewChecked {
    */
   public forceQuit(): void {
     this.outputs.push('^C')
+    // TODO: Need to reset command here
+    // For example, quit login after entering user
+    // The user is still there when you restart the process
     this.activeCommand = null;
     this.addPrompt();
   }
