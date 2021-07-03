@@ -9,10 +9,20 @@ export class DraggableDirective {
   document: Document;
   startingMouseX: number;
   startingMouseY: number;
+  pageHeight: number;
+  pageWidth: number;
 
   constructor(@Inject(DOCUMENT) document: Document, element: ElementRef) {
     this.div = element;
     this.document = document;
+    this.pageHeight = window.innerHeight;
+    this.pageWidth = window.innerWidth;
+
+    window.onresize = () => {
+      this.pageHeight = window.innerHeight;
+      this.pageWidth = window.innerWidth;
+      console.log(this.pageHeight, this.pageWidth);
+    }
   }
 
   @HostListener('mousedown', ['$event.clientX', '$event.clientY']) onDrag(mouseX: number, mouseY: number) {
@@ -21,28 +31,27 @@ export class DraggableDirective {
 
     this.document.onmousemove = (event) => {
       event.preventDefault();
+      // Calculate how far the mouse moved on the X and Y axis
       let newMouseX = this.startingMouseX - event.clientX;
       let newMouseY = this.startingMouseY - event.clientY;
+      // Save the new X and Y position of the mouse
       this.startingMouseX = event.clientX;
       this.startingMouseY = event.clientY;
-      this.div.nativeElement.style.top = (this.div.nativeElement.offsetTop - newMouseY) + "px";
-      this.div.nativeElement.style.left = (this.div.nativeElement.offsetLeft - newMouseX) + "px";
+      // Calculate the new top and left position of the window
+      let newWindowTop = this.div.nativeElement.offsetTop - newMouseY;
+      let newWindowLeft = this.div.nativeElement.offsetLeft - newMouseX;
+      // Check the window isn't being moved outside of the Y axis boundaries
+      if (newWindowTop >= 0 && newWindowTop + this.div.nativeElement.offsetHeight <= this.pageHeight) {
+        this.div.nativeElement.style.top = newWindowTop + "px";
+      }
+      // Check the window isn't being moved outside of the X axis boundaries
+      if (newWindowLeft >= 0 && newWindowLeft + this.div.nativeElement.offsetWidth <= this.pageWidth) {
+        this.div.nativeElement.style.left = newWindowLeft + "px";
+      }
+    };
+
+    this.document.onmouseup = () => {
+      this.document.onmousemove = null;
     };
   }
-
-  // startDrag(event: any) {
-  //   console.log(event);
-  //   event.preventDefault();
-  //   let newMouseX = this.startingMouseX - event.clientX;
-  //   let newMouseY = this.startingMouseY - event.clientY;
-  //   this.startingMouseX = event.clientX;
-  //   this.startingMouseY = event.clientY;
-  //   this.div.nativeElement.style.top = (this.div.nativeElement.offsetTop - newMouseY) + "px";
-  //   this.div.nativeElement.style.left = (this.div.nativeElement.offsetLeft - newMouseX) + "px";
-  // }
-
-  @HostListener('mouseup') stopDrag() {
-    this.document.onmousemove = null;
-  }
-
 }

@@ -22,8 +22,14 @@
 
 .window {
   position: absolute;
-  border: 1px solid #d3d3d3;
   cursor: grab;
-  height: 800px;
-  width: 700px;
+  height: 500px;
+  width: 750px;
+}
+
+.window2 {
+  position: absolute;
+  cursor: grab;
+  height: 400px;
+  width: 400px;
 }
