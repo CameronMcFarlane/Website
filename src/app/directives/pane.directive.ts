@@ -1,67 +1,67 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[pane]'
 })
-export class PaneDirective {
+export class PaneDirective implements OnInit {
   // Reference to the parent pane element
   pane: ElementRef;
   startingMouseX: number;
   startingMouseY: number;
-  pageHeight: number;
-  pageWidth: number;
-  divWidth: number;
-  divHeight: number;
+  windowHeight: number;
+  windowWidth: number;
+  paneWidth: number;
+  paneHeight: number;
 
   constructor(element: ElementRef) {
     this.pane = element;
-    this.pageHeight = window.innerHeight;
-    this.pageWidth = window.innerWidth;
-    this.divHeight = this.pane.nativeElement.offsetHeight;
-    this.divWidth = this.pane.nativeElement.offsetWidth;
-
     /* Bug with multiple 'draggable' divs.
        The last created window overrides the window.onresize
        so only one window gets the updated page details.*/
     window.onresize = () => {
-      this.pageHeight = window.innerHeight;
-      this.pageWidth = window.innerWidth;
-      console.log(this.pageHeight, this.pageWidth);
+      this.windowHeight = window.innerHeight;
+      this.windowWidth = window.innerWidth;
+      console.log(this.windowHeight, this.windowWidth);
     }
   }
 
-  @HostListener('mousedown', ['$event.clientX', '$event.clientY']) onDrag(mouseX: number, mouseY: number) {
-    console.log(this.pane.nativeElement.children[0]);
-    this.startingMouseX = mouseX;
-    this.startingMouseY = mouseY;
+  ngOnInit(): void {
+    this.paneHeight = this.pane.nativeElement.clientHeight;
+    this.paneWidth = this.pane.nativeElement.clientWidth;
+    this.windowHeight = window.innerHeight;
+    this.windowWidth = window.innerWidth;
+    // console.log(this.pane.nativeElement.children[0]);
+  }
+
+  @HostListener('mousedown', ['$event']) onDrag(event: any) {
+    // Calculate coordinates of the mouse relative to the pane
+    var relativeX = event.clientX - this.pane.nativeElement.offsetLeft;
+    var relativeY = event.clientY - this.pane.nativeElement.offsetTop;
 
     // While the mouse is down, update the position of the pane on every mouse movement
-    document.onmousemove = (event) => {
+    document.onmousemove = (event: any) => {
       event.preventDefault();
-      // Calculate how far the mouse moved on the X and Y axis
-      let newMouseX = this.startingMouseX - event.clientX;
-      let newMouseY = this.startingMouseY - event.clientY;
-      // Save the new X and Y position of the mouse
-      this.startingMouseX = event.clientX;
-      this.startingMouseY = event.clientY;
-      // Calculate the new top and left position of the window
-      let newWindowTop = this.pane.nativeElement.offsetTop - newMouseY;
-      let newWindowLeft = this.pane.nativeElement.offsetLeft - newMouseX;
-      // Check the window isn't being moved outside of the Y axis boundaries
-      if (newWindowTop <= 0) {
-        this.pane.nativeElement.style.top = "0px";
-      } else if (newWindowTop + this.divHeight >= this.pageHeight) {
-        this.pane.nativeElement.style.top = (this.pageHeight - this.divHeight) + "px";
-      } else {
-        this.pane.nativeElement.style.top = newWindowTop + "px";
-      }
-      // Check the window isn't being moved outside of the X axis boundaries
-      if (newWindowLeft <= 0) {
+      // Calculate the new coordinates of the mouse relative to the pane
+      var newRelativeX = event.clientX - this.pane.nativeElement.offsetLeft;
+      var newRelativeY = event.clientY - this.pane.nativeElement.offsetTop;
+      // Use the difference between the two relative coordinates to calculate new pane coordinates
+      var newPaneX = this.pane.nativeElement.offsetLeft + (newRelativeX - relativeX);
+      var newPaneY = this.pane.nativeElement.offsetTop + (newRelativeY - relativeY);
+      // Check movement against the X boundaries of the browser window
+      if (newPaneX < 0) {
         this.pane.nativeElement.style.left = "0px";
-      } else if (newWindowLeft + this.divWidth >= this.pageWidth) {
-        this.pane.nativeElement.style.left = (this.pageWidth - this.divWidth) + "px";
+      } else if (newPaneX + this.paneWidth > this.windowWidth) {
+        this.pane.nativeElement.style.left = (this.windowWidth - this.paneWidth) + "px";
       } else {
-        this.pane.nativeElement.style.left = newWindowLeft + "px";
+        this.pane.nativeElement.style.left = newPaneX + "px";
+      }
+      // Check movement against the Y boundaries of the browser window
+      if (newPaneY < 0) {
+        this.pane.nativeElement.style.top = "0px";
+      } else if (newPaneY + this.paneHeight > this.windowHeight) {
+        this.pane.nativeElement.style.top = (this.windowHeight - this.paneHeight) + "px";
+      } else {
+        this.pane.nativeElement.style.top = newPaneY + "px";
       }
     };
 
