@@ -1,0 +1,22 @@
+<div #pane class="pane"
+  [style.top.px]="top"
+  [style.left.px]="left"
+  [style.height.px]="height"
+  [style.width.px]="width"
+  [style.min-height.px]="minHeight"
+  [style.min-width.px]="minWidth"
+  [style.z-index]="zIndex">
+
+  <div class="pane-header" 
+    (mousedown)="move($event)">
+  </div>
+
+  <div class="pane-body">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="pane-resize"
+    (mousedown)="resize($event)">
+  </div>
+
+</div>

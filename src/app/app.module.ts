@@ -4,14 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './components/app.component';
 import { TerminalComponent } from './components/terminal/terminal.component';
 import { InputComponent } from './components/terminal/input/input.component';
-import { PaneDirective } from './directives/pane.directive';
+import { PaneComponent } from './components/pane-manager/pane/pane.component';
+import { PaneManagerComponent } from './components/pane-manager/pane-manager.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TerminalComponent,
     InputComponent,
-    PaneDirective
+    PaneManagerComponent,
+    PaneComponent
   ],
   imports: [
     BrowserModule

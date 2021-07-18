@@ -19,28 +19,3 @@
   font-size: 60pt;
   margin-top: -10px;
 }
-
-.pane {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  cursor: grab;
-  border-radius: 15px;
-  box-shadow: 0px 0px 10px -1px black;
-  overflow: hidden;
-}
-
-.pane-title {
-  background-color: red;
-  height: 30px;
-}
-
-.pane-body {
-  background-color: blue;
-  width: 300px;
-  height: 200px;
-}
-
-.pane-footer {
-  background-color: green;
-}
