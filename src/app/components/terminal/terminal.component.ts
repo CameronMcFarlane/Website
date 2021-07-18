@@ -55,13 +55,15 @@ export class TerminalComponent implements OnInit, AfterViewChecked {
    * Adds a prompt to the terminal window.
    */
   private addPrompt() {
-    this.outputs.push(
-      '<br/>'
-      + '<span class="terminal-user">' + this.username + '@terminal</span>'
+    var promptTemplate = 
+      '<span class="terminal-user">' + this.username + '@terminal</span>'
       + '<span>:</span>'
       + '<span class="terminal-directory">' + this.directory + '</span>'
-      + '<span>$&nbsp;</span>'
-    );
+      + '<span>$&nbsp;</span>';
+    if (this.outputs.length != 0) {
+      this.outputs.push('<br/>');
+    }
+    this.outputs.push(promptTemplate);
   }
 
   /**

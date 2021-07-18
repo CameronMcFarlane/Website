@@ -1,16 +1,12 @@
 <div class="terminal-background" 
-    (click)="setFocusOnInput()">
-
-    <p class="terminal-hide">hide</p>
-
-    <div class="terminal-text">
-        <span *ngFor="let output of outputs">
-            <span [innerHTML]="output"></span>
-        </span>
-        <terminal-input
-            (keyEnter)="processInput($event)"
-            (forceQuit)="forceQuit()">
-        </terminal-input>
-    </div>
-    
+  (click)="setFocusOnInput()">
+  <div class="terminal-text">
+    <span *ngFor="let output of outputs">
+      <span [innerHTML]="output"></span>
+    </span>
+    <terminal-input
+      (keyEnter)="processInput($event)"
+      (forceQuit)="forceQuit()">
+    </terminal-input>
+  </div>
 </div>

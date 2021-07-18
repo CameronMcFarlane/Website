@@ -13,8 +13,7 @@ export class InitCommand implements Command {
      */
     public execute(terminal: TerminalComponent, args: string[]): boolean {
         let output: string 
-            = "Welcome to Terminal, a very much work-in-progress project.<br/>"
-            + "Type 'help' to see a list of available commands.<br/>";
+            = "Type 'help' to see a list of available commands.<br/>";
         terminal.outputs.push(output)
         return false;
     }

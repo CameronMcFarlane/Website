@@ -1,63 +1,29 @@
 .terminal-background {
-    /* Styling */
-    background-color: #262626;
-    box-sizing: border-box;
-    /* Positioning */
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    /* Flexbox */
-    display: flex;
-    flex-direction: column;
-}
-
-.terminal-hide {
-    text-align: right;
-    margin-right: 25px;
-    margin-top: 18px;
-    margin-bottom: 5px;
-    font-size: 20px;
-    user-select: none;
-}
-
-.terminal-hide:hover {
-    cursor: pointer;
+  /* Styling */
+  background-color: #262626;
+  box-sizing: border-box;
+  /* Positioning */
+  /* position: absolute; */
+  height: 100%;
+  width: 100%;
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
 }
 
 .terminal-text {
-    word-break: break-all;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-bottom: 50px;
-    /* Text Overflow */
-    overflow-x: hidden; 
-    overflow-y: auto;
-    flex-direction: column-reverse;
+  word-break: break-all;
+  margin: 20px;
+  /* Text Overflow */
+  overflow-x: hidden; 
+  overflow-y: auto;
+  flex-direction: column-reverse;
 }
 
 .terminal-user {
-    color: #FF9059;
+  color: #FF9059;
 }
 
 .terminal-directory {
-    color: #00cccc;
-}
-
-/* Scroll Bar Styling */
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track-piece {
-    background: #262626;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #3b3b3b;
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #474747;
+  color: #00cccc;
 }
