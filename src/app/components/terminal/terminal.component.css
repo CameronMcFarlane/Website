@@ -1,12 +1,7 @@
 .terminal-background {
-  /* Styling */
   background-color: #262626;
-  box-sizing: border-box;
-  /* Positioning */
-  /* position: absolute; */
   height: 100%;
   width: 100%;
-  /* Flexbox */
   display: flex;
   flex-direction: column;
 }

@@ -6,6 +6,7 @@ import { TerminalComponent } from './components/terminal/terminal.component';
 import { InputComponent } from './components/terminal/input/input.component';
 import { PaneComponent } from './components/pane-manager/pane/pane.component';
 import { PaneManagerComponent } from './components/pane-manager/pane-manager.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { PaneManagerComponent } from './components/pane-manager/pane-manager.com
     TerminalComponent,
     InputComponent,
     PaneManagerComponent,
-    PaneComponent
+    PaneComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule
