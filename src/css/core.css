@@ -1,0 +1,43 @@
+@import url("fonts.css");
+
+/* Debugging: */
+/* * {
+  border: 1px solid var(--border-color);
+} */
+
+:root {
+  /* Shared variables */
+  --example: 0;
+
+  /* Light theme variables */
+  --bg-color: #ffffff;
+  --bg-color-alt: #f2f1ef;
+  --fg-color: #010000;
+  --fg-color-alt: #404040;
+  --border-color: #010000;
+  --highlight-color: #f2f1ef;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1f2021;
+  --bg-color-alt: #1f2021;
+  --fg-color: #ffffff;
+  --fg-color-alt: #dedede;
+  --border-color: #ffffff;
+  --highlight-color: #2c2c2c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+}
+
+a {
+  color: var(--fg-color);
+  text-decoration: none;
+}
