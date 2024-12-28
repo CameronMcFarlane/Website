@@ -1,27 +1,8 @@
 # Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+This is my website. My little corner of the internet which I plan to use as a sandbox - a place to experiement with web development. 
 
-## Development server
+Every time I've tried to tackle this project in the past, I've always got caught up in learning a hot new framework and tried to make some complex single-page application. This time, we're going back to the roots. No front-end framework. No API. Let's just build a static website with HTML, CSS and JavaScript (if necessary). I only want to add additional complexity if absolutely necessary to hit the goal with a justifiable amount of effort.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Let's do this.  
+[cameronmcfarlane.dev](https://cameronmcfarlane.dev)
