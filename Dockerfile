@@ -2,7 +2,7 @@
 FROM nginx:latest
 
 # Copy across the nginx config file
-COPY ./.nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./.nginx/nginx-http.conf /etc/nginx/conf.d/default.conf
 # Copy across the website contents
 COPY ./src /usr/share/nginx/html
 
