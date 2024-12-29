@@ -2,7 +2,7 @@ services:
 
   webserver:
     container_name: webserver
-    build: Dockerfile
+    build: .
     ports:
       - "80:80"
       - "443:443"
