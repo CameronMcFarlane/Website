@@ -2,16 +2,19 @@ services:
 
   letsencrypt:
     image: certbot/certbot:latest
-    command: sh -c "certbot certonly --standalone -d ${DOMAINNAME} -d www.${DOMAINNAME} --agree-tos --email ${EMAIL} --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http"
+    command: "certonly --standalone -d ${DOMAINNAME} -d www.${DOMAINNAME} --non-interactive --agree-tos --email ${EMAIL} --rsa-key-size 4096 --verbose --keep-until-expiring --preferred-challenges=http"
     volumes:
-      - "/etc/letsencrypt:/etc/letsencrypt"
-      - "/var/lib/letsencrypt:/var/lib/letsencrypt"
-    ports:
-      - "80:80"
+      - "certdata:/etc/letsencrypt"
+      - "certdata:/var/lib/letsencrypt"
 
   webserver:
     container_name: webserver
     build: .
+    volumes:
+      - "certdata:/etc/letsencrypt:ro"
     ports:
       - "80:80"
       - "443:443"
+
+volumes:
+  certdata:
