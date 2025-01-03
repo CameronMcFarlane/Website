@@ -7,7 +7,8 @@
 
 :root {
   /* Shared variables */
-  --example: 0;
+  --border-width: 1px;
+  --content-width: 1000px;
 
   /* Light theme variables */
   --bg-color: #ffffff;
@@ -20,10 +21,10 @@
 
 [data-theme="dark"] {
   --bg-color: #1f2021;
-  --bg-color-alt: #1f2021;
+  --bg-color-alt:#2d2e2f;
   --fg-color: #ffffff;
   --fg-color-alt: #dedede;
-  --border-color: #ffffff;
+  --border-color:#afafaf;
   --highlight-color: #2c2c2c;
 }
 
