@@ -6,6 +6,8 @@ services:
     volumes:
       - "certdata:/etc/letsencrypt"
       - "certdata:/var/lib/letsencrypt"
+    # ports:
+    #   - "80:80"
 
   webserver:
     container_name: webserver
