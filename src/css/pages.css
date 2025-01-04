@@ -1,0 +1,55 @@
+@import url("core.css");
+
+main {
+  display: flex;
+  margin-top: var(--page-margin);
+  margin-bottom: var(--page-margin);
+  margin-left: var(--page-margin);
+  margin-right: var(--page-margin);
+}
+
+.container {
+  width: 100%;
+}
+
+.title {
+
+  p {
+    font-size: 0.9rem;
+    color: var(--fg-color-alt);
+  }
+
+  margin-bottom: 20px;
+
+}
+
+.page-item {
+  background-color: var(--bg-color-alt);
+  transition: background-color 0.25s;
+  padding: 0.75rem 1rem 0.75rem 1rem;
+  margin-bottom: 15px;
+}
+
+.page-item:hover {
+  background-color: var(--bg-color);
+  transition: background-color 0.25s;
+}
+
+.page-list {
+  list-style-type: none;
+}
+
+.page-date {
+  font-size: 0.8rem;
+  color: var(--fg-color-alt);
+}
+
+@media screen and (min-width: 1100px) {
+
+  main {
+    max-width: var(--page-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}

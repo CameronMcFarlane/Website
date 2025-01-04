@@ -34,27 +34,25 @@ main {
 
 }
 
-.pages {
+.nav {
+  width: 300px;
+}
 
-  ul {
-    list-style-type: none;
-  }
+.nav-list {
+  list-style-type: none;
+}
 
-  li {
-    background-color: var(--bg-color-alt);
-    transition: background-color 0.25s;
-    padding: 0.5rem 0 0.5rem 0;
-    margin-bottom: 15px;
-  }
+.nav-item {
+  background-color: var(--bg-color-alt);
+  transition: background-color 0.25s;
+  padding: 0.5rem 0 0.5rem 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 
-  li:hover {
-    cursor: pointer;
-    background-color: var(--bg-color);
-    transition: background-color 0.25s;
-  }
-
-  width: 275px;
-
+.nav-item:hover {
+  background-color: var(--bg-color);
+  transition: background-color 0.25s;
 }
 
 @media screen and (min-width: 800px) {
