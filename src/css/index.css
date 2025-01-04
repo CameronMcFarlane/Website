@@ -20,35 +20,39 @@ main {
 }
 
 .title {
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    color: var(--fg-color-alt);
+    font-size: 0.9rem;
+  }
+
   margin-bottom: 75px;
+
 }
 
-.title h1 {
-  font-size: 1.5rem;
+.nav {
+  width: 300px;
 }
 
-.title p {
-  color: var(--fg-color-alt);
-  font-size: 0.9rem;
-}
-
-.pages {
-  width: 275px;
-}
-
-.pages ul {
+.nav-list {
   list-style-type: none;
 }
 
-.pages li {
-  border: 1px solid var(--border-color);
-  padding: 0.2rem 0 0.2rem 0;
-  margin-bottom: 10px;
+.nav-item {
+  background-color: var(--bg-color-alt);
+  transition: background-color 0.25s;
+  padding: 0.5rem 0 0.5rem 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-.pages li:hover {
-  cursor: pointer;
-  background-color: var(--highlight-color);
+.nav-item:hover {
+  background-color: var(--bg-color);
+  transition: background-color 0.25s;
 }
 
 @media screen and (min-width: 800px) {

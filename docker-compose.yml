@@ -1,0 +1,10 @@
+services:
+
+  webserver:
+    container_name: webserver
+    build: .
+    volumes:
+      - "./.nginx/nginx-dev.conf:/etc/nginx/conf.d/default.conf"
+      - "./src:/usr/share/nginx/html"
+    ports:
+      - "3000:3000"
