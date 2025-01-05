@@ -56,5 +56,5 @@ The first command will check the expiration on the certificate and kick off a re
 With the host now fully configured, we can start the webserver! To do this, run the following command:
 
 ```bash
-docker compose -f docker-compose.prod.yml up webserver
+docker compose -f docker-compose.prod.yml up webserver -d
 ```

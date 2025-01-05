@@ -2,10 +2,7 @@
 
 main {
   display: flex;
-  margin-top: var(--page-margin);
-  margin-bottom: var(--page-margin);
-  margin-left: var(--page-margin);
-  margin-right: var(--page-margin);
+  margin: var(--page-margin-y) var(--page-margin-x);
 }
 
 .container {

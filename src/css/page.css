@@ -3,42 +3,57 @@
 main {
   display: flex;
   justify-content: center;
-  margin-top: var(--page-margin);
-  margin-bottom: var(--page-margin);
-  margin-left: var(--page-margin);
-  margin-right: var(--page-margin);
+  flex-direction: column;
+  margin: var(--page-margin-y) var(--page-margin-x);
 }
 
-.title {
+p, li {
+  color: var(--fg-color-alt);
+  font-size: 0.92rem;
+}
 
-  h1 {
-    font-size: 1.75rem;
-  }
+a {
+  color: var(--fg-color-link);
+}
 
-  p {
-    color: var(--fg-color-alt);
-    font-size: 0.9rem;
-  }
-
+.header {
   border-bottom: solid var(--border-width) var(--border-color);
   padding-bottom: 10px;
-  margin-bottom: 20px;
-
-}
-
-.content > p {
-  margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.highlight {
-  background-color: var(--highlight-color);
-  padding: 10px 20px 10px 20px;
-  margin: 20px 0 20px 0;
+.back {
+  color: var(--fg-color-alt);
+  font-size: 0.9rem;
 }
 
-ul.mods {
-  list-style-type: none;
+.title {
+  font-size: 1.5rem;
+  transition: font-size 0.2s ease-in-out;
+}
+
+.content p, ul, ol {
+  margin: 0.6rem 0;
+}
+
+.highlight {
+  border: solid var(--border-width) var(--border-color);
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+}
+
+.highlight p {
+  margin: 0;
+}
+
+.horizontal-margin {
+  margin: 0.5rem 0rem;
+}
+
+.code {
+  color: var(--fg-color-code);
+  background-color: var(--highlight-color);
+  padding: 0.1rem 0.4rem;
 }
 
 @media screen and (min-width: 1050px) {
@@ -47,6 +62,11 @@ ul.mods {
     max-width: var(--page-width);
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .title {
+    font-size: 1.75rem;
+    transition: font-size 0.2s ease-in-out;
   }
 
 }

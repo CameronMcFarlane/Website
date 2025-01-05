@@ -10,13 +10,16 @@
   /* Shared variables */
   --border-width: 1px;
   --page-width: 1000px;
-  --page-margin: 25px;
+  --page-margin-x: 25px;
+  --page-margin-y: 50px;
 
   /* Light theme variables */
   --bg-color: #ffffff;
   --bg-color-alt: #f2f1ef;
   --fg-color: #010000;
   --fg-color-alt: #404040;
+  --fg-color-link:#0037a5;
+  --fg-color-code: #c78b00;
   --border-color: #010000;
   --highlight-color: #f2f1ef;
 }
@@ -26,6 +29,8 @@
   --bg-color-alt:#2d2e2f;
   --fg-color: #ffffff;
   --fg-color-alt: #dedede;
+  --fg-color-link: #1f69ff;
+  --fg-color-code: #fada8e;
   --border-color:#afafaf;
   --highlight-color: #2c2c2c;
 }
@@ -43,4 +48,8 @@ html {
 a {
   color: var(--fg-color);
   text-decoration: none;
+}
+
+ol, ul {
+  list-style-position: inside;
 }
