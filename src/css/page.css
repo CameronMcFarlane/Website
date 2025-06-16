@@ -36,6 +36,10 @@ a {
   margin: 0.6rem 0;
 }
 
+.content li {
+  margin: 0.3rem 0;
+}
+
 .highlight {
   border: solid var(--border-width) var(--border-color);
   padding: 0.8rem 1rem;
