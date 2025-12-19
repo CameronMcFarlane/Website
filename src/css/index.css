@@ -43,15 +43,15 @@ main {
 }
 
 .nav-item {
-  background-color: var(--bg-color-alt);
   transition: background-color 0.25s;
-  padding: 0.5rem 0 0.5rem 0;
+  border: 2px solid var(--border-color);
+  padding: 0.75rem 0 0.75rem 0;
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
 .nav-item:hover {
-  background-color: var(--bg-color);
+  background-color: var(--bg-color-alt);
   transition: background-color 0.25s;
 }
 
