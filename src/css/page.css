@@ -16,15 +16,18 @@ a {
   color: var(--fg-color-link);
 }
 
+h3 {
+  margin-top: 1.5rem;
+}
+
+ol li {
+  margin: 0.6rem 0 0.6rem 0;
+}
+
 .header {
   border-bottom: solid var(--border-width) var(--border-color);
   padding-bottom: 10px;
   margin-bottom: 10px;
-}
-
-.back {
-  color: var(--fg-color-alt);
-  font-size: 0.9rem;
 }
 
 .title {
@@ -32,12 +35,12 @@ a {
   transition: font-size 0.2s ease-in-out;
 }
 
-.content p, ul, ol {
-  margin: 0.6rem 0;
+.alert {
+  color: var(--fg-color-alert);
 }
 
-.content li {
-  margin: 0.3rem 0;
+.content p, ul, ol {
+  margin: 0.6rem 0;
 }
 
 .highlight {

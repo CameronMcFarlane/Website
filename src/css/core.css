@@ -20,17 +20,19 @@
   --fg-color-alt: #404040;
   --fg-color-link:#0037a5;
   --fg-color-code: #c78b00;
+  --fg-color-alert: #660000ff;
   --border-color: #010000;
   --highlight-color: #f2f1ef;
 }
 
 [data-theme="dark"] {
-  --bg-color: #1f2021;
+  --bg-color: #181a1c;
   --bg-color-alt:#2d2e2f;
   --fg-color: #ffffff;
   --fg-color-alt: #dedede;
   --fg-color-link: #1f69ff;
   --fg-color-code: #fada8e;
+  --fg-color-alert: #ff4d4dff;
   --border-color:#afafaf;
   --highlight-color: #2c2c2c;
 }
