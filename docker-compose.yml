@@ -5,7 +5,7 @@ services:
     build: .
     volumes:
       - "./.nginx/nginx-dev.conf:/etc/nginx/conf.d/default.conf"
-      - "./src:/usr/share/nginx/html:ro"
-      - "./vault:/usr/share/nginx/html/vault:ro"
+      - "./src:/usr/share/nginx/html"
+      - "./vault:/usr/share/nginx/html/vault"
     ports:
       - "3000:3000"
