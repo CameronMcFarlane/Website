@@ -1,2 +1,6 @@
 # Environment Variables
 .env
+
+# Vault static files
+vault/*
+!vault/.gitignore

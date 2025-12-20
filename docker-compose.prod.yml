@@ -14,6 +14,7 @@ services:
     build: .
     volumes:
       - "certdata:/etc/letsencrypt:ro"
+      - "./vault:/usr/share/nginx/html/vault:ro"
     ports:
       - "80:80"
       - "443:443"
