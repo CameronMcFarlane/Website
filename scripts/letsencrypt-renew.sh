@@ -8,7 +8,18 @@
 # certificate validation. The second command sends a SIGHUP signal to Nginx, which
 # forces it to reload its configuration, including certificates, without interrupting service.
 
-pushd /website
+echo "Starting script - $(date)"
+
+pushd /website > /dev/null
+
+echo "Checking if certificate needs to be renewed..."
 docker compose -f docker-compose.prod.yml up letsencrypt
+
+echo "Asking nginx to reload..."
 docker compose exec webserver nginx -s reload
-popd
+
+popd > /dev/null
+
+echo "Done."
+echo ""
+
