@@ -4,3 +4,7 @@
 # Vault static files
 vault/*
 !vault/.gitignore
+
+# Log files
+logs
+
